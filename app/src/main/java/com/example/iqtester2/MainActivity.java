@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void createNewQuestion(){
-
+        startCountdownTimer();
         int result;
         a = new Random().nextInt(50);
         b = new Random().nextInt(50);
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             currentResult = wrongResult;
 
         }
-        countdownTimer();
+
     }
     private void updateUserScore(){
         userScore += 10;
@@ -119,8 +119,9 @@ public class MainActivity extends AppCompatActivity {
         alertDialog = builder.create();
         alertDialog.show();
     }
-    private void countdownTimer(){
+    private void startCountdownTimer(){
         if(timer != null)
+            timer.cancel();
         timer = new CountDownTimer(31000,1000) {//1 sec = 1000 milli second
             @Override
             public void onTick(long millisUntilFinished) {
